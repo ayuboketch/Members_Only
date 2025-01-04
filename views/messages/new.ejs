@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h2 class="mb-4">Create New Message</h2>
+
+    <form action="/messages" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          name="title"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="text" class="form-label">Message</label>
+        <textarea
+          class="form-control"
+          id="text"
+          name="text"
+          rows="5"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Post Message</button>
+    </form>
+  </div>
+</div>

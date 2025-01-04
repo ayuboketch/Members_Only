@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <h1 class="mb-4">Messages</h1>
+
+    <% if (currentUser) { %>
+    <a href="/messages/new" class="btn btn-primary mb-4">Create New Message</a>
+    <% } %> <% if (messages && messages.length > 0) { %> <%
+    messages.forEach(function(message) { %>
+    <div class="card message-card">
+      <div class="card-body">
+        <h5 class="card-title"><%= message.title %></h5>
+        <p class="card-text"><%= message.text %></p>
+
+        <% if (showAuthor) { %>
+        <p class="card-text">
+          <small class="text-muted">
+            Posted by <%= message.User.firstName %> <%= message.User.lastName %>
+            on <%= message.createdAt.toLocaleDateString() %>
+          </small>
+        </p>
+        <% } %> <% if (currentUser && currentUser.isAdmin) { %>
+        <button
+          class="btn btn-danger btn-sm delete-message"
+          data-message-id="<%= message.id %>"
+        >
+          Delete
+        </button>
+        <% } %>
+      </div>
+    </div>
+    <% }) %> <% } else { %>
+    <p>No messages yet!</p>
+    <% } %>
+  </div>
+</div>
