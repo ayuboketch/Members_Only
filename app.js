@@ -51,6 +51,16 @@ app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
 app.use('/messages', require('./routes/messages'));
 
+// app.js
+const client = require('./config/db');
+
+// Example query
+client.query('SELECT NOW()', (err, res) => {
+    if (err) throw err;
+    console.log('Current time from database:', res.rows[0]);
+    client.end(); // Close the connection
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on: http://localhost:${PORT}`);
